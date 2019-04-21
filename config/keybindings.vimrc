@@ -1,5 +1,5 @@
 " set leader key
-     let g:mapleader="\\"
+"     let g:mapleader="\\"
 
    " alias for leader key nmap <space> \
  "    xmap <space> \
@@ -11,6 +11,7 @@ nnoremap k gk
 
 " Replace <Esc> with C-c
 inoremap <F1> <Esc>
+inoremap jk <Esc>
 
 " navigate split screens easily
 nmap <silent> <c-k> :wincmd k<CR>
