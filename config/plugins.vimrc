@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 'ncm2/ncm2'
+Plug 'Valloric/YouCompleteMe' , {'do', './install.py'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
