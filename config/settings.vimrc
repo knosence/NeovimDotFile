@@ -24,8 +24,6 @@ set smartcase
 set autowrite
 set autoread
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
 " use tab to forward cycle
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " use tab to backward cycle
