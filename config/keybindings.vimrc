@@ -25,3 +25,5 @@ nmap K 10k
 
 nnoremap <silent> <leader>q :q!<CR>
 nnoremap <silent> <leader>w :w<CR>
+
+nmap <c-z> :w<cr>

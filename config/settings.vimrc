@@ -1,3 +1,12 @@
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+
+set number
+set relativenumber
+
+let g:startify_files_number = 5
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
@@ -8,7 +17,11 @@ set softtabstop=4
 set expandtab
 set smarttab
 
-" Automatic indentation is good
+"syntax highlighting
+set syntax=css
+
+
+"Automatic indentation is good
 set autoindent
 
 " show the cursor position all the time
@@ -24,12 +37,37 @@ set smartcase
 set autowrite
 set autoread
 
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-" Close the documentation window when completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " jsx
 let g:jsx_ext_required = 0
+
+autocmd FileType javascript noremap <buffer> <c-f> : call JsBeautify() <cr>
+       " for json
+autocmd FileType json noremap <buffer> <c-f> : call JsonBeautify() <cr>
+        " for jsx
+autocmd FileType jsx noremap <buffer> <c-f> : call JsxBeautify() <cr>
+       " for html
+autocmd FileType html noremap <buffer> <c-f> : call HtmlBeautify() <cr>
+
+au BufNewFile,BufRead *.ejs set filetype=html
+
+autocmd FileType mason noremap <buffer> <c-f> : call HtmlBeautify() <cr>
+ 
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> : call CSSBeautify() <cr>
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>

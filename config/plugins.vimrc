@@ -1,6 +1,5 @@
 call plug#begin()
 
-"Plug 'ncm2/ncm2'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
@@ -12,43 +11,65 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/vim-easy-align'
-Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
-Plug 'pangloss/vim-javascript'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
 
 Plug 'yggdroot/indentline'
 
-Plug 'valloric/youcompleteme', { 'do': './install.py' }
 
-Plug 'hail2u/vim-css3-syntax'
 Plug 'chiel92/vim-autoformat'
-
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-"Plug 'ncm2/ncm2-vim-lsp'
-"Plug 'ncm2/ncm2-bufword'
-"Plug 'ncm2/ncm2-path'
-"Plug 'roxma/nvim-yarp'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug ''
 
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 
+"Language Settings
+Plug 'sheerun/vim-polyglot'
 
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
+"HTML and CSS
+Plug 'mattn/emmet-vim'
+Plug 'hail2u/vim-css3-syntax'
+
+
+"JavaScript
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ryanolsonx/vim-lsp-css'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+
+
+"Autocomplete setting
+"NCM
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-vim-lsp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+
+"You Complete Me
+"Plug 'valloric/youcompleteme', { 'do': './install.py' }
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
 
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
@@ -75,5 +96,3 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
