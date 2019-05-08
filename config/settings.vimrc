@@ -4,6 +4,7 @@ set omnifunc=syntaxcomplete#Complete
 
 set number
 set relativenumber
+set signcolumn=yes
 
 let g:startify_files_number = 5
 
