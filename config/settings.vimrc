@@ -17,10 +17,6 @@ set softtabstop=4
 set expandtab
 set smarttab
 
-"syntax highlighting
-set syntax=css
-
-
 "Automatic indentation is good
 set autoindent
 
@@ -56,8 +52,6 @@ autocmd FileType mason noremap <buffer> <c-f> : call HtmlBeautify() <cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> : call CSSBeautify() <cr>
 
-" Required for operations modifying multiple buffers like rename.
-set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],

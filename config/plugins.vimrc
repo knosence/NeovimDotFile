@@ -20,7 +20,6 @@ Plug 'yggdroot/indentline'
 
 Plug 'chiel92/vim-autoformat'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug ''
 
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
