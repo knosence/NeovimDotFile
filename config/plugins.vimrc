@@ -1,86 +1,108 @@
-call plug#begin()
+" ============================================================================ "
+" ===                               PLUGINS                                === "
+" ============================================================================ "
 
-Plug 'neomake/neomake'
-Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
-Plug 'bling/vim-airline'
-Plug 'kaicataldo/material.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/vim-easy-align'
+" check whether vim-plug is installed and install it if necessary
+let plugpath = expand('<sfile>:p:h'). '/autoload/plug.vim'
+if !filereadable(plugpath)
+    if executable('curl')
+        let plugurl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        call system('curl -fLo ' . shellescape(plugpath) . ' --create-dirs ' . plugurl)
+        if v:shell_error
+            echom "Error downloading vim-plug. Please install it manually.\n"
+            exit
+        endif
+    else
+        echom "vim-plug not installed. Please install it manually or install curl.\n"
+        exit
+    endif
+endif
+
+call plug#begin('~/.config/nvim/plugged')
+
+" === Editing Plugins === "
+" Trailing whitespace highlighting & automatic fixing
+Plug 'ntpeters/vim-better-whitespace'
+
+" auto-close plugin
+Plug 'rstacruz/vim-closer'
+
+" Improved motion in Vim
+Plug 'easymotion/vim-easymotion'
+
+" Intellisense Engine
+" Plug 'neoclide/coc.nvim', { 'do': 'yarn install' }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" Tmux/Neovim movement integration
+Plug 'christoomey/vim-tmux-navigator'
+
+" Denite - Fuzzy finding, buffer management
+Plug 'Shougo/denite.nvim'
+
+" Linting "
 Plug 'w0rp/ale'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-surround'
 
-Plug 'yggdroot/indentline'
+" Snippet support
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
+" Print function signatures in echo area
+Plug 'Shougo/echodoc.vim'
 
-Plug 'chiel92/vim-autoformat'
-Plug 'ctrlpvim/ctrlp.vim'
+" === Git Plugins === "
+" Enable git changes to be shown in sign column
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 
-Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
+" === Javascript Plugins === "
+" Typescript syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'
 
-"Language Settings
-Plug 'sheerun/vim-polyglot'
-
-"HTML and CSS
-Plug 'mattn/emmet-vim'
-Plug 'hail2u/vim-css3-syntax'
-
-
-"JavaScript
+" ReactJS JSX syntax highlighting
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'maxmellon/vim-jsx-pretty'
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ryanolsonx/vim-lsp-css'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Generate JSDoc commands based on function signature
+Plug 'heavenshell/vim-jsdoc'
 
+" === Syntax Highlighting === "
 
+" Syntax highlighting for nginx
+Plug 'chr4/nginx.vim'
 
-"Autocomplete setting
-"NCM
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-vim-lsp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+" Syntax highlighting for javascript libraries
+Plug 'othree/javascript-libraries-syntax.vim'
 
-"You Complete Me
-"Plug 'valloric/youcompleteme', { 'do': './install.py' }
+" Improved syntax highlighting and indentation
+Plug 'othree/yajs.vim'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" === UI === "
+" File explorer
+Plug 'scrooloose/nerdtree'
 
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Startify "
+Plug 'mhinz/vim-startify'
 
+" Colorscheme
+Plug 'kaicataldo/material.vim'
+
+" Customized vim status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Icons
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Initialize plugin system
 call plug#end()
 
 
-let g:deoplete#enable_at_startup = 1
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" Color Scheme
-set termguicolors
-set background=dark
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'dark'
+"Further Config for Colorscheme
 let g:lightline = { 'colorscheme': 'material_vim' }
-
-
+let g:material_theme_style = 'dark'
+let g:material_terminal_italics = 1
+set background=dark
 colorscheme material
 
 if (has("nvim"))
