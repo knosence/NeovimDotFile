@@ -1,6 +1,3 @@
-" set leader key
-    let mapleader=";"
-
 " better vertial movement for wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -9,8 +6,9 @@ nnoremap k gk
 inoremap <F1> <Esc>
 inoremap ;; <Esc>
 
-"Terminal
+"Terminal Emulation
 tnoremap <Esc> <C-\><C-n>
+nnoremap <silent> <leader>sh :terminal<CR>
 
 " navigate split screens easily
 nmap <silent> <c-k> :wincmd k<CR>
@@ -32,7 +30,6 @@ nnoremap <silent> <leader>w :w<CR>
 
 nmap <c-z> :w<cr>
 
-let g:user_emmet_leader_key = '<Leader>'
 
 "let g:user_emmet_expandabbr_key = '<C-e>,'
 " let g:user_emmet_expandword_key = '<C-e>;'
@@ -76,3 +73,20 @@ set autoread
 if exists('g:loaded_webdevicons')
  call webdevicons#refresh()
 endif
+
+"====Mappings===="
+"Split
+noremap <leader>h :<C-u>split<CR>
+noremap <leader>v :<C-u>vsplit<CR>
+
+"Git
+noremap <leader>ga :Gwrite<CR>
+noremap <leader>gc :Gcommit<CR>
+noremap <leader>gsh :Gpush<CR>
+noremap <leader>gll :Gpull<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gd :Gvdiff<CR>
+noremap <leader>gr :Gremove<CR>
+
+
