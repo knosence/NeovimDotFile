@@ -2,22 +2,6 @@
 " ===                               PLUGINS                                === "
 " ============================================================================ "
 
-" check whether vim-plug is installed and install it if necessary
-let plugpath = expand('<sfile>:p:h'). '/autoload/plug.vim'
-if !filereadable(plugpath)
-    if executable('curl')
-        let plugurl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        call system('curl -fLo ' . shellescape(plugpath) . ' --create-dirs ' . plugurl)
-        if v:shell_error
-            echom "Error downloading vim-plug. Please install it manually.\n"
-            exit
-        endif
-    else
-        echom "vim-plug not installed. Please install it manually or install curl.\n"
-        exit
-    endif
-endif
-
 call plug#begin('~/.config/nvim/plugged')
 
 " === Editing Plugins === "
@@ -33,9 +17,6 @@ Plug 'easymotion/vim-easymotion'
 " Intellisense Engine
 " Plug 'neoclide/coc.nvim', { 'do': 'yarn install' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-
-" Tmux/Neovim movement integration
-Plug 'christoomey/vim-tmux-navigator'
 
 " Denite - Fuzzy finding, buffer management
 Plug 'Shougo/denite.nvim'

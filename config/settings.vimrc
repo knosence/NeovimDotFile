@@ -10,8 +10,6 @@ set number
 set relativenumber
 set signcolumn=yes
 
-let g:startify_files_number = 5
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
 
