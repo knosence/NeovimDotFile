@@ -51,7 +51,7 @@ autocmd FileType html noremap <buffer> <c-f> : call HtmlBeautify() <cr>
 au BufNewFile,BufRead *.ejs set filetype=html
 
 autocmd FileType mason noremap <buffer> <c-f> : call HtmlBeautify() <cr>
- 
+
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> : call CSSBeautify() <cr>
 
@@ -235,10 +235,6 @@ augroup END
 :call extend(g:ale_linters, {
     \"go": ['golint', 'go vet'], })
 
-
-" html
-" for html files, 2 spaces
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 
 " javascript

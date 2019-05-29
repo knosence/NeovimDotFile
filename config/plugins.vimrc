@@ -36,6 +36,30 @@ Plug 'Shougo/echodoc.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
+"=== html === "
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+" === ocaml === "
+Plug 'def-lkb/ocp-indent-vim'
+
+" === python === "
+Plug 'davidhalter/jedi-vim'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+
+" === rust === "
+Plug 'racer-rust/vim-racer'
+
+" Rust.vim
+Plug 'rust-lang/rust.vim'
+
+" === typescript === "
+Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+
 " === Javascript Plugins === "
 " Typescript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
@@ -74,6 +98,16 @@ Plug 'vim-airline/vim-airline-themes'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+"Tab Complete
+Plug 'ervandew/supertab'
+
+"Tab alignment
+Plug 'godlygeek/tabular'
+
+Plug 'jiangmiao/auto-pairs'
+
+
 
 " Initialize plugin system
 call plug#end()
