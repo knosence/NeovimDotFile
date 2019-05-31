@@ -28,6 +28,7 @@ nmap K 10k
 nnoremap <silent> <leader>q :q!<CR>
 nnoremap <silent> <leader>w :w<CR>
 
+"To stop dropping out of vim without closing the buffer
 nmap <c-z> :w<cr>
 
 
