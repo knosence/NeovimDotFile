@@ -8,6 +8,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
 
+" auto bulles
+Plug 'dkarter/bullets.vim'
+
 " auto-close plugin
 Plug 'rstacruz/vim-closer'
 
@@ -17,9 +20,12 @@ Plug 'easymotion/vim-easymotion'
 " Intellisense Engine
 " Plug 'neoclide/coc.nvim', { 'do': 'yarn install' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Denite - Fuzzy finding, buffer management
-Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/denite.nvim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Linting "
 Plug 'w0rp/ale'
@@ -27,6 +33,7 @@ Plug 'w0rp/ale'
 " Snippet support
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
@@ -70,7 +77,9 @@ Plug 'mxw/vim-jsx'
 " Generate JSDoc commands based on function signature
 Plug 'heavenshell/vim-jsdoc'
 
-" === Syntax Highlighting === "
+" === Syntax Highlighting === 
+Plug 'sheerun/vim-polyglot'
+Plug 'chrisbra/Colorizer'
 
 " Syntax highlighting for nginx
 Plug 'chr4/nginx.vim'
@@ -90,6 +99,17 @@ Plug 'mhinz/vim-startify'
 
 " Colorscheme
 Plug 'kaicataldo/material.vim'
+Plug 'dracula/vim', { 'commit': '147f389f4275cec4ef43ebc25e2011c57b45cc00' }
+
+"Aethetics - Additional
+Plug 'nightsense/nemo'
+Plug 'yuttie/hydrangea-vim'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'rhysd/vim-color-spring-night'
+Plug 'zaki/zazen'
+Plug 'nightsense/forgotten'
+Plug 'junegunn/seoul256.vim'
+
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
@@ -102,12 +122,19 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Tab Complete
 Plug 'ervandew/supertab'
 
+"TagBar
+Plug 'majutsushi/tagbar'
+
 "Tab alignment
 Plug 'godlygeek/tabular'
 
 Plug 'jiangmiao/auto-pairs'
 
+"Easy Commenting
+Plug 'scrooloose/nerdcommenter'
 
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -119,6 +146,38 @@ let g:material_theme_style = 'dark'
 let g:material_terminal_italics = 1
 set background=dark
 colorscheme material
+
+color dracula
+
+" Dracula Mode (Dark)
+function! ColorDracula()
+    let g:airline_theme=''
+    color dracula
+    IndentLinesEnable
+endfunction
+
+" Seoul256 Mode (Dark & Light)
+function! ColorSeoul256()
+    let g:airline_theme='silver'
+    color seoul256
+    IndentLinesDisable
+endfunction
+
+" Forgotten Mode (Light)
+function! ColorForgotten()
+    " Light airline themes: tomorrow, silver, alduin
+    " Light colors: forgotten-light, nemo-light
+    let g:airline_theme='tomorrow'
+    color forgotten-light
+    IndentLinesDisable
+endfunction
+
+" Zazen Mode (Black & White)
+function! ColorZazen()
+    let g:airline_theme='badcat'
+    color zazen
+    IndentLinesEnable
+endfunction
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >

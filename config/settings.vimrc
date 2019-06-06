@@ -1,8 +1,6 @@
-filetype plugin on
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
-" set leader key
-let mapleader=";"
 
 let g:user_emmet_leader_key = '<Leader>'
 
@@ -20,11 +18,23 @@ set softtabstop=4
 set expandtab
 set smarttab
 
+""" Coloring
+syntax on
+color dracula
+highlight Pmenu guibg=white guifg=black gui=bold
+highlight Comment gui=bold
+highlight Normal gui=none
+highlight NonText guibg=none
+
 "Automatic indentation is good
 set autoindent
 
 " show the cursor position all the time
 set ruler
+
+"Improved Readablilty
+set list listchars=trail:»,tab:»-
+set fillchars+=vert:\ 
 
 " Searching
 nnoremap / /\v
@@ -32,7 +42,7 @@ vnoremap / /\v
 set ignorecase
 set smartcase
 
-" read/write file when switching buffers
+" read/rrite file when switching buffers
 set autowrite
 set autoread
 
@@ -64,11 +74,8 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-" === Coc.nvim === "
+
+"=== Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -143,12 +150,19 @@ augroup WindowManagement
   autocmd WinEnter * call Handle_Win_Enter()
 augroup END
 
+"Deoplete
+"let g:deoplete#enable_at_startup = 1
+
 " Change highlight group of preview window when open
 function! Handle_Win_Enter()
   if &previewwindow
     setlocal winhighlight=Normal:MarkdownError
   endif
 endfunction
+
+"indentLine
+let g:indentLine_char = '▏'
+let g:indentLine_color_gui = '#363949'
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -162,6 +176,26 @@ let g:ale_linters = {}
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+
+" fzf-vim
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Type'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Character'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
@@ -206,30 +240,6 @@ augroup completion_preview_close
   endif
 augroup END
 
-augroup go
-
-  au!
-  au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
-  au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
-  au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
-  au FileType go nmap <Leader>db <Plug>(go-doc-browser)
-
-  au FileType go nmap <leader>r  <Plug>(go-run)
-  au FileType go nmap <leader>t  <Plug>(go-test)
-  au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
-  au FileType go nmap <Leader>i <Plug>(go-info)
-  au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-  au FileType go nmap <C-g> :GoDecls<cr>
-  au FileType go nmap <leader>dr :GoDeclsDir<cr>
-  au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-  au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
-  au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-
-augroup END
 
 " ale
 :call extend(g:ale_linters, {
@@ -245,6 +255,7 @@ augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
 augroup END
+
 
 
 " ocaml
@@ -301,4 +312,21 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " typescript
 let g:yats_host_keyword = 1
 
+"TagBar
+let g:tagbar_width = 30
+let g:tagbar_iconchars = ['↠', '↡']
 
+"For Journal
+set filetype=journal
+let g:SuperTabDefaultCompletionType = "<C-n>"
+
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"Ultisnips
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-x>"
+
+set title

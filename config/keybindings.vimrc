@@ -1,3 +1,6 @@
+" set leader key
+let mapleader=";"
+
 " better vertial movement for wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -16,17 +19,13 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-nnoremap <silent> <Leader>n :bn<CR>
-nnoremap <silent> <Leader>p :bp<CR>
-
-
 nmap H ^
 nmap L $
 nmap J 10j
 nmap K 10k
 
-nnoremap <silent> <leader>q :q!<CR>
-nnoremap <silent> <leader>w :w<CR>
+nmap <silent> <leader>q :q!<CR>
+nmap <silent> <leader>w :w<CR>
 
 "To stop dropping out of vim without closing the buffer
 nmap <c-z> :w<cr>
@@ -52,7 +51,7 @@ nmap <c-z> :w<cr>
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
 "  <leader>f - Opens current file location in NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>b :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
 " === coc.nvim === "
@@ -90,4 +89,13 @@ noremap <leader>gb :Gblame<CR>
 noremap <leader>gd :Gvdiff<CR>
 noremap <leader>gr :Gremove<CR>
 
-
+nmap <leader>k :ColorToggle<CR>
+nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nmap <leader>ea :AirlineTheme
+nmap <leader>ee :Colors<CR>
+nmap <leader>t :TagbarToggle<CR>
+nmap <leader>s <C-w>s<C-w>j:terminal<CR>
+nmap <leader>h :RainbowParentheses!!<CR>
+nmap <Leader>n :bnext<CR>
+nmap <Leader>p :bprevious<CR>
+nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
