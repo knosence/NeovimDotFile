@@ -89,13 +89,14 @@ noremap <leader>gb :Gblame<CR>
 noremap <leader>gd :Gvdiff<CR>
 noremap <leader>gr :Gremove<CR>
 
+nmap <Leader>z :FZF ~/<CR>
 nmap <leader>k :ColorToggle<CR>
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nmap <leader>r :so %<cr>
 nmap <leader>ea :AirlineTheme
 nmap <leader>ee :Colors<CR>
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>s <C-w>s<C-w>j:terminal<CR>
-nmap <leader>h :RainbowParentheses!!<CR>
+nmap <leader>R :RainbowParentheses!!<CR>
 nmap <Leader>n :bnext<CR>
 nmap <Leader>p :bprevious<CR>
 nmap <leader>vs <C-w>v<C-w>l:terminal<CR>

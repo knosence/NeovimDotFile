@@ -77,7 +77,7 @@ Plug 'mxw/vim-jsx'
 " Generate JSDoc commands based on function signature
 Plug 'heavenshell/vim-jsdoc'
 
-" === Syntax Highlighting === 
+" === Syntax Highlighting ===
 Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/Colorizer'
 
@@ -109,7 +109,8 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'zaki/zazen'
 Plug 'nightsense/forgotten'
 Plug 'junegunn/seoul256.vim'
-
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
